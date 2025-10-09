@@ -373,6 +373,12 @@
       if (currentFilter !== "all") {
         filtered = allNews.filter(n => n.category === currentFilter);
       }
+      // Filtre pour ne garder que les news avec une image valide (URL non vide et non placeholder)
+      filtered = filtered.filter(n =>
+        n.img &&
+        n.img !== "" &&
+        !/placeholder-projet\.jpg$/.test(n.img)
+      );
       if (filtered.length === 0) {
         grid.innerHTML = `<div style="color:#fff;font-size:18px;text-align:center;padding:40px;">Aucune actualité trouvée pour ce filtre.</div>`;
         return;
@@ -380,7 +386,7 @@
       filtered.forEach((n, i) => {
         grid.innerHTML += `
           <div class="veille-card" style="animation-delay:${i * 0.07}s;">
-            <img class="veille-img" src="${n.img || 'assets/img/placeholder-projet.jpg'}" alt="${n.title}">
+            <img class="veille-img" src="${n.img}" alt="${n.title}" onerror="this.onerror=null;this.src='assets/img/placeholder-projet.jpg';">
             <div class="veille-content">
               <div class="veille-badges">
                 <span class="veille-badge veille-badge-${n.category}">${n.category === "ia" ? "IA" : n.category === "securite" ? "Sécurité" : "Tech News"}</span>
