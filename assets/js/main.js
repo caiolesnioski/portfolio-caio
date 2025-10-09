@@ -253,4 +253,163 @@
     });
   });
 
+  /**
+   * Veille Technologique - RSS Feeds
+   */
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- CONFIGURATION ---
+    const RSS_FEEDS = [
+      {
+        name: "Canaltech",
+        url: "https://canaltech.com.br/rss/",
+        api: "https://api.rss2json.com/v1/api.json?rss_url=https://canaltech.com.br/rss/",
+        icon: '<i class="bi bi-globe veille-source-icon canaltech"></i>',
+        category: "tech",
+        badge: "canaltech"
+      },
+      {
+        name: "TechCrunch",
+        url: "https://techcrunch.com/feed/",
+        api: "https://api.rss2json.com/v1/api.json?rss_url=https://techcrunch.com/feed/",
+        icon: '<i class="bi bi-lightning-charge veille-source-icon techcrunch"></i>',
+        category: "tech",
+        badge: "techcrunch"
+      },
+      {
+        name: "Wired Sécurité",
+        url: "https://www.wired.com/feed/category/security/latest/rss",
+        api: "https://api.rss2json.com/v1/api.json?rss_url=https://www.wired.com/feed/category/security/latest/rss",
+        icon: '<i class="bi bi-shield-lock veille-source-icon wired"></i>',
+        category: "securite",
+        badge: "wired"
+      },
+      {
+        name: "The Verge",
+        url: "https://www.theverge.com/rss/index.xml",
+        api: "https://api.rss2json.com/v1/api.json?rss_url=https://www.theverge.com/rss/index.xml",
+        icon: '<i class="bi bi-cpu veille-source-icon verge"></i>',
+        category: "tech",
+        badge: "verge"
+      },
+      {
+        name: "MIT Tech Review (IA)",
+        url: "https://www.technologyreview.com/feed/",
+        api: "https://api.rss2json.com/v1/api.json?rss_url=https://www.technologyreview.com/feed/",
+        icon: '<i class="bi bi-robot veille-source-icon mit"></i>',
+        category: "ia",
+        badge: "mit"
+      }
+    ];
+
+    // --- ELEMENTS ---
+    const grid = document.getElementById("veille-grid");
+    const loading = document.getElementById("veille-loading");
+    const error = document.getElementById("veille-error");
+    const filterBtns = document.querySelectorAll(".veille-filter");
+
+    // --- UTILS ---
+    function formatDate(dateStr) {
+      const d = new Date(dateStr);
+      if (isNaN(d)) return "";
+      return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" });
+    }
+    function truncate(str, n) {
+      return str.length > n ? str.slice(0, n - 1) + "…" : str;
+    }
+
+    // --- FETCH & RENDER ---
+    let allNews = [];
+    let currentFilter = "all";
+
+    async function fetchAllFeeds() {
+      loading.style.display = "flex";
+      error.style.display = "none";
+      grid.innerHTML = "";
+      let news = [];
+      try {
+        const promises = RSS_FEEDS.map(feed =>
+          fetch(feed.api).then(r => r.json())
+            .then(data => {
+              if (!data.items) return [];
+              return data.items.slice(0, 8).map(item => ({
+                title: item.title,
+                link: item.link,
+                desc: item.description ? truncate(item.description.replace(/<[^>]+>/g, ''), 150) : "",
+                img: item.enclosure?.link || item.thumbnail || "",
+                date: formatDate(item.pubDate),
+                source: feed.name,
+                sourceIcon: feed.icon,
+                sourceBadge: feed.badge,
+                category: feed.category,
+                raw: item
+              }));
+            })
+        );
+        const results = await Promise.all(promises);
+        news = results.flat();
+        // Catégorisation IA/Sécurité/Tech
+        news.forEach(n => {
+          if (n.sourceBadge === "mit") n.category = "ia";
+          if (n.sourceBadge === "wired") n.category = "securite";
+          // Ajout IA si titre ou desc contient IA/AI
+          if (/(\bIA\b|\bAI\b|intelligence artificielle)/i.test(n.title + n.desc)) n.category = "ia";
+          // Ajout Sécurité si titre ou desc contient sécurité/security
+          if (/sécurité|security|cyber/i.test(n.title + n.desc)) n.category = "securite";
+        });
+        // Tri par date décroissante
+        news.sort((a, b) => new Date(b.raw.pubDate) - new Date(a.raw.pubDate));
+        allNews = news.slice(0, 12);
+        renderNews();
+      } catch (e) {
+        error.style.display = "block";
+      } finally {
+        loading.style.display = "none";
+      }
+    }
+
+    function renderNews() {
+      grid.innerHTML = "";
+      let filtered = allNews;
+      if (currentFilter !== "all") {
+        filtered = allNews.filter(n => n.category === currentFilter);
+      }
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="color:#fff;font-size:18px;text-align:center;padding:40px;">Aucune actualité trouvée pour ce filtre.</div>`;
+        return;
+      }
+      filtered.forEach((n, i) => {
+        grid.innerHTML += `
+          <div class="veille-card" style="animation-delay:${i * 0.07}s;">
+            <img class="veille-img" src="${n.img || 'assets/img/placeholder-projet.jpg'}" alt="${n.title}">
+            <div class="veille-content">
+              <div class="veille-badges">
+                <span class="veille-badge veille-badge-${n.category}">${n.category === "ia" ? "IA" : n.category === "securite" ? "Sécurité" : "Tech News"}</span>
+                <span class="veille-badge veille-badge-${n.sourceBadge}">${n.sourceIcon}${n.source}</span>
+              </div>
+              <div class="veille-title">${n.title}</div>
+              <div class="veille-desc">${n.desc}</div>
+              <div class="veille-meta">
+                <span class="veille-date">${n.date}</span>
+                <a class="veille-link" href="${n.link}" target="_blank" rel="noopener">Lire plus</a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // --- FILTRES ---
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", function () {
+        filterBtns.forEach(b => b.classList.remove("veille-active"));
+        this.classList.add("veille-active");
+        currentFilter = this.getAttribute("data-filter");
+        renderNews();
+      });
+    });
+
+    // --- INIT ---
+    fetchAllFeeds();
+  });
+
 })();

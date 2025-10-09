@@ -550,8 +550,31 @@
     </div>
   </div>
 </section>
-    <!-- Resume Section -->
-    <section id="resume" class="section">
+
+<section id="veille" class="section veille-section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Veille Technologique</h2>
+    <p>Retrouvez les dernières actualités sur la tech, l’IA et la sécurité, sélectionnées automatiquement depuis les meilleurs sites.</p>
+    <div class="veille-filtres">
+      <button class="veille-filter veille-active" data-filter="all">Tous</button>
+      <button class="veille-filter" data-filter="ia">IA</button>
+      <button class="veille-filter" data-filter="securite">Sécurité</button>
+      <button class="veille-filter" data-filter="tech">Tech News</button>
+    </div>
+  </div>
+  <div class="container">
+    <div id="veille-loading" class="veille-loading">
+      <div class="spinner"></div>
+      <span>Chargement des actualités...</span>
+    </div>
+    <div id="veille-error" class="veille-error" style="display:none;">
+      <i class="bi bi-exclamation-triangle"></i> Impossible de charger les actualités. Veuillez réessayer plus tard.
+    </div>
+    <div id="veille-grid" class="veille-grid"></div>
+  </div>
+</section>
+
+
   <div class="container section-title" data-aos="fade-up">
     <h2>CV</h2>
     <p></p>
