@@ -1,0 +1,207 @@
+/* Styles spécifiques à la page Veille Technologique
+   S'appuie sur assets/css/main.css pour les variables et typographie.
+   Mobile-first, responsive. Couleurs : #4A90E2 (bleu), #2C3E50 (bleu foncé).
+*/
+
+/* Reset local / réglages */
+.veille-hero {
+  position: relative;
+  padding: 80px 12px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(44,62,80,0.92), rgba(8,24,40,0.92)), url('../img/hero-bg.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 48vh;
+}
+
+.veille-hero-overlay { /* couche d'accessibilité si nécessaire */ }
+
+/* Hero inner */
+.veille-hero-inner {
+  max-width: 920px;
+  z-index: 2;
+  padding: 30px;
+}
+
+.veille-hero h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.veille-hero-sub {
+  color: #dfeaf6;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.veille-hero-cta .btn {
+  margin: 0 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(12,34,56,0.25);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.veille-hero-cta .btn:hover,
+.veille-hero-cta .btn:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(12,34,56,0.32);
+}
+
+/* ARTICLES GRID */
+.articles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  padding: 20px 8px 60px 8px;
+}
+
+.article-card {
+  background: #ffffff10;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform .22s ease, box-shadow .22s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 6px 18px rgba(10,30,60,0.06);
+}
+
+.article-card:hover,
+.article-card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(10,30,60,0.12);
+}
+
+.article-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin: 0;
+}
+
+.article-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.article-card:hover .article-media img {
+  transform: scale(1.04);
+}
+
+.article-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.article-badge {
+  display: inline-block;
+  background: #bfe1ff; /* bleu clair */
+  color: #0b304d;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .4px;
+}
+
+.article-title {
+  margin: 6px 0 0 0;
+  font-size: 1.05rem;
+  color: var(--contrast-color, #fff);
+  font-weight: 700;
+}
+
+.article-desc {
+  color: #e6eef9;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin: 6px 0 0 0;
+  flex: 1;
+  color: #dfeaf6;
+}
+
+/* Link */
+.article-link {
+  margin-top: 12px;
+  align-self: flex-start;
+  color: #ffffff;
+  background: #4A90E2;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .18s ease, transform .12s ease;
+}
+.article-link:hover,
+.article-link:focus {
+  background: #2f7ed2;
+  transform: translateY(-3px);
+}
+
+/* RÉPONSE (deux colonnes sur desktop) */
+.reponse-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 28px 8px 80px 8px;
+}
+
+.reponse-text p {
+  color: #eaf3ff;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+
+.reponse-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(10,30,60,0.18);
+}
+
+/* Desktop >= 992px : deux colonnes */
+@media (min-width: 992px) {
+  .articles-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .reponse-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+  .veille-hero {
+    min-height: 56vh;
+    padding: 120px 12px;
+  }
+  .veille-hero h1 { font-size: 2.6rem; }
+  .veille-hero-sub { font-size: 1.15rem; }
+}
+
+/* Tablette */
+@media (min-width: 700px) and (max-width: 991px) {
+  .articles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Accessibilité focus visible */
+.btn:focus, .article-link:focus, .article-card:focus {
+  outline: 3px solid rgba(74,144,226,0.25);
+  outline-offset: 3px;
+}
+
+/* petites finitions */
+.section { padding-top: 28px; padding-bottom: 28px; }
+.section-title h2 { color: #fff; }
+.section-title p { color: #dfeaf6; }

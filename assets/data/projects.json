@@ -1,0 +1,12 @@
+{
+  "gestion-financiere": {
+    "title": "Projet Perso - Gestion Financière",
+    "img": "assets/img/portfolio/product-1.jpg",
+    "sections": {
+      "Contexte": "...",
+      "Besoin": "...",
+      ...
+    }
+  },
+  "portfolio": { ... }
+}

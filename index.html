@@ -25,6 +25,43 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <!-- Styles Veille intégrés (mobile-first) -->
+  <style>
+  /* Veille - hero, articles, réponse - intégré (utilise variables de main.css) */
+  .veille-hero {
+    position: relative;
+    padding: 64px 12px;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(44,62,80,0.92), rgba(8,24,40,0.92)), url('assets/img/hero-bg.jpg') center/cover no-repeat;
+    text-align: center;
+  }
+  .veille-hero h1 { font-size: 1.6rem; font-weight:700; margin-bottom:.4rem; color:#fff; }
+  .veille-hero p { color: #dfeaf6; margin-bottom:1rem; }
+  .veille-hero .btn { margin: 6px; border-radius:10px; }
+
+  .articles-grid { display:grid; grid-template-columns:1fr; gap:18px; padding:18px 8px 48px; }
+  .article-card { background: rgba(255,255,255,0.03); border-radius:10px; overflow:hidden; transition:transform .22s, box-shadow .22s; display:flex; flex-direction:column; }
+  .article-card:focus, .article-card:hover { transform:translateY(-8px); box-shadow:0 16px 40px rgba(0,0,0,.18); outline:none; }
+  .article-media { width:100%; aspect-ratio:16/9; overflow:hidden; }
+  .article-media img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s; }
+  .article-card:hover .article-media img { transform:scale(1.04); }
+  .article-body { padding:14px; display:flex; flex-direction:column; gap:8px; color:#dfeaf6; }
+  .article-badge { background:#bfe1ff; color:#0b304d; padding:6px 10px; border-radius:8px; font-weight:700; font-size:13px; display:inline-block; }
+  .article-title { font-weight:700; font-size:1.05rem; color:var(--contrast-color,#fff); margin:6px 0 0; }
+  .article-desc { color:#dfeaf6; font-size:.95rem; line-height:1.45; margin:0; flex:1; }
+  .article-link { display:inline-block; margin-top:12px; background:#4A90E2; color:#fff; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:600; }
+  .article-link:hover { background:#2f7ed2; }
+
+  /* Réponse layout */
+  .reponse-layout { display:grid; grid-template-columns:1fr; gap:20px; padding:18px 8px 64px; align-items:center; }
+  .reponse-text p { color:#eaf3ff; line-height:1.7; margin-bottom:12px; }
+  .reponse-figure img { width:100%; border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.22); }
+
+  @media(min-width:700px){ .articles-grid { grid-template-columns: repeat(2,1fr); } }
+  @media(min-width:992px){ .articles-grid { grid-template-columns: repeat(3,1fr); } .reponse-layout { grid-template-columns:1fr 1fr; } .veille-hero { padding:100px 12px; } .veille-hero h1 { font-size:2.2rem; } }
+  /* focus visible */
+  .article-card[tabindex]:focus { box-shadow:0 20px 44px rgba(10,30,60,0.2); outline:3px solid rgba(74,144,226,0.18); outline-offset:3px; }
+  </style>
 
   <!-- =======================================================
   * Template Name: MyResume
@@ -84,7 +121,12 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>À propos</h2>
-        <p>Je suis étudiant en informatique basé à Lyon, passionné par la programmation et le développement logiciel. Actuellement à ISITECH, je développe mes compétences dans divers langages de programmation tels que Python, Java et JavaScript. J'aime relever des défis complexes et concevoir des solutions innovantes, que ce soit en développement web, en algorithmes ou en apprentissage automatique. À travers mes études et mes projets personnels, mon objectif est de contribuer à l'industrie technologique en constante évolution tout en améliorant continuellement mes connaissances et mes compétences en programmation.</p>
+        <p>
+Étudiant brésilien en informatique à Lyon, je suis en constante évolution dans l'univers du développement logiciel. Après avoir maîtrisé le français et m'être adapté à un nouveau système éducatif, je me spécialise maintenant en développement d'applications et gestion de bases de données.
+
+Actuellement en BTS SIO, je travaille avec des langages comme PHP, JavaScript, Python et SQL. Mais au-delà des technologies, ce qui m'anime c'est la résolution de problèmes et la conception de solutions qui ont un impact réel.
+
+Mon intérêt pour l'éthique technologique m'amène à réfléchir sur notre responsabilité en tant que développeurs : comment créer des outils qui servent réellement les utilisateurs ? C'est cette question qui nourrit ma curiosité et oriente mes apprentissages.</p>
       </div><!-- End Section Title -->
 
     </section><!-- /About Section -->
@@ -197,7 +239,7 @@
         </div>
       </div>
       <!-- Card 4 -->
-      <div class="col-lg-3 col-md-6 exp-card">
+      <div class="col-lg-3 col-md-6 exp-card">c
         <div class="exp-card-inner">
           <img src="data:image/png;base64,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" alt="Ibis Hotel" class="exp-img">
           <div class="exp-title">Petit de journée<br><span class="exp-sub">Ibis Hotel (Extra)</span></div>
@@ -311,129 +353,73 @@
   <!-- Filtres -->
   <div class="container mb-4 projets-filtres">
     <button class="filter-btn filter-active">Tous</button>
-    <button class="filter-btn">ReactJS</button>
-    <button class="filter-btn">PHP</button>
-    <button class="filter-btn">.NET</button>
-    <button class="filter-btn">Réseau</button>
+    <button class="filter-btn">Projets Perso</button>
+    <button class="filter-btn">SQL</button>
+    <button class="filter-btn">HTML/CSS/JS</button>
   </div>
 
   <!-- Nouvelle grille de projets -->
   <div class="container">
-    <div class="dashboard-projets-grid">
-      <!-- Projet 1 -->
-      <div class="dashboard-projet-card">
+    <div class="dashboard-projets-grid" role="list">
+
+      <!-- Projet 5 - Hackathon SQL (exemple) -->
+      <article class="dashboard-projet-card" role="listitem">
         <div class="dashboard-projet-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Projet ReactJS Dashboard">
-          <div class="dashboard-projet-tags">
-            <span class="dashboard-projet-tag">ReactJS</span>
-            <span class="dashboard-projet-tag">API REST</span>
-          </div>
-        </div>
-        <div class="dashboard-projet-info">
-          <div class="dashboard-projet-title">Projet ReactJS - Dashboard</div>
-          <div class="dashboard-projet-desc">Dashboard interactif pour gestion de tâches, ReactJS + API REST.</div>
-          <div class="dashboard-projet-links">
-            <a href="#" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
-            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
-            <a href="#" title="Lien externe"><i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- Projet 2 -->
-      <div class="dashboard-projet-card">
-        <div class="dashboard-projet-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Projet PHP Blog">
-          <div class="dashboard-projet-tags">
-            <span class="dashboard-projet-tag">PHP</span>
-            <span class="dashboard-projet-tag">CakePHP</span>
-          </div>
-        </div>
-        <div class="dashboard-projet-info">
-          <div class="dashboard-projet-title">Projet PHP - Blog</div>
-          <div class="dashboard-projet-desc">Blog dynamique avec CakePHP, gestion utilisateurs et commentaires.</div>
-          <div class="dashboard-projet-links">
-            <a href="#" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
-            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
-            <a href="#" title="Lien externe"><i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- Projet 3 -->
-      <div class="dashboard-projet-card">
-        <div class="dashboard-projet-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Projet .NET RH">
-          <div class="dashboard-projet-tags">
-            <span class="dashboard-projet-tag">.NET</span>
-            <span class="dashboard-projet-tag">SQL Server</span>
-          </div>
-        </div>
-        <div class="dashboard-projet-info">
-          <div class="dashboard-projet-title">Projet .NET - Gestion RH</div>
-          <div class="dashboard-projet-desc">Application RH pour suivi des employés, C# .NET, SQL Server.</div>
-          <div class="dashboard-projet-links">
-            <a href="#" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
-            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
-            <a href="#" title="Lien externe"><i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- Projet 4 -->
-      <div class="dashboard-projet-card">
-        <div class="dashboard-projet-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Projet Réseau Monitoring">
-          <div class="dashboard-projet-tags">
-            <span class="dashboard-projet-tag">Réseau</span>
-            <span class="dashboard-projet-tag">Python</span>
-          </div>
-        </div>
-        <div class="dashboard-projet-info">
-          <div class="dashboard-projet-title">Projet Réseau - Monitoring</div>
-          <div class="dashboard-projet-desc">Outil de supervision réseau, scripts Python et interface web.</div>
-          <div class="dashboard-projet-links">
-            <a href="#" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
-            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
-            <a href="#" title="Lien externe"><i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- Projet 5 -->
-      <div class="dashboard-projet-card">
-        <div class="dashboard-projet-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Projet Hackathon SQL">
-          <div class="dashboard-projet-tags">
+          <img src="assets/img/detailed.jpg" alt="Projet Hackathon SQL - code et base de données">
+          <div class="dashboard-projet-tags" aria-hidden="true">
             <span class="dashboard-projet-tag">SQL</span>
             <span class="dashboard-projet-tag">Hackathon</span>
           </div>
         </div>
         <div class="dashboard-projet-info">
-          <div class="dashboard-projet-title">Projet Hackathon - SQL</div>
-          <div class="dashboard-projet-desc">Site web orienté base de données, challenge en équipe.</div>
+          <h3 class="dashboard-projet-title">Projet Hackathon - SQL</h3>
+          <p class="dashboard-projet-desc">Site web orienté base de données, challenge en équipe.</p>
           <div class="dashboard-projet-links">
-            <a href="#" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
-            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
-            <a href="#" title="Lien externe"><i class="bi bi-box-arrow-up-right"></i></a>
+            <a href="project.html?id=hackathon-sql" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
+            <a href="#" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i><span class="sr-only">GitHub</span></a>
+            <a href="#" title="Lien externe"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i><span class="sr-only">Lien externe</span></a>
           </div>
         </div>
-      </div>
-      <!-- Projet 6 -->
-      <div class="dashboard-projet-card">
+      </article>
+
+      <!-- Projet 6 - Portfolio (exemple) -->
+      <article class="dashboard-projet-card" role="listitem">
         <div class="dashboard-projet-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Projet Portfolio">
-          <div class="dashboard-projet-tags">
+          <img src="assets/img/Capture d’écran 2025-12-02 à 22.53.50.png" alt="Projet Portfolio - site personnel">
+          <div class="dashboard-projet-tags" aria-hidden="true">
             <span class="dashboard-projet-tag">Portfolio</span>
             <span class="dashboard-projet-tag">HTML/CSS/JS</span>
           </div>
         </div>
         <div class="dashboard-projet-info">
-          <div class="dashboard-projet-title">Projet Perso - Portfolio</div>
-          <div class="dashboard-projet-desc">Portfolio personnel, HTML/CSS/JS, design responsive et animations.</div>
+          <h3 class="dashboard-projet-title">Projet Perso - Portfolio</h3>
+          <p class="dashboard-projet-desc">Portfolio personnel, HTML/CSS/JS, design responsive et animations.</p>
           <div class="dashboard-projet-links">
-            <a href="#" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
-            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
-            <a href="#" title="Lien externe"><i class="bi bi-box-arrow-up-right"></i></a>
+            <a href="project.html?id=portfolio" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
+            <a href="#" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i><span class="sr-only">GitHub</span></a>
+            <a href="#" title="Lien externe"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i><span class="sr-only">Lien externe</span></a>
           </div>
         </div>
-      </div>
+      </article>
+
+      <!-- Projet 7 - Gestion Financière (exemple) -->
+      <article class="dashboard-projet-card" role="listitem">
+        <div class="dashboard-projet-img-wrapper">
+          <img src="assets/img/Capture d’écran 2025-12-02 à 22.57.38.png" alt="Projet Gestion Financière - interface de gestion">
+          <div class="dashboard-projet-tags" aria-hidden="true">
+            <span class="dashboard-projet-tag">JS</span>
+            <span class="dashboard-projet-tag">Projet Perso</span>
+          </div>
+        </div>
+        <div class="dashboard-projet-info">
+          <h3 class="dashboard-projet-title">Projet Perso - Gestion Financière</h3>
+          <p class="dashboard-projet-desc">Application de gestion financière, suivi des dépenses et revenus.</p>
+          <div class="dashboard-projet-links">
+            <a href="project.html?id=gestion-financiere" class="dashboard-btn-projet">Voir plus <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -446,120 +432,128 @@
   </div>
   <div class="container">
     <div class="row certif-grid">
-      <!-- Carte 1 -->
+      <!-- Carte 1 - CakePHP -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-cloud" style="color:#ff1a1a;font-size:2.2rem;"></i>
+            <i class="bi bi-cake2" style="color:#D33C43;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">AWS Academy Cloud Foundations</div>
-            <div class="certif-sub">Amazon Web Services</div>
-            <div class="certif-date">Septembre 2023</div>
+            <div class="certif-title">CakePHP</div>
+            <div class="certif-sub">Stage XEFI</div>
+            <div class="certif-date">Juin-Juillet 2024</div>
           </div>
         </div>
       </div>
-      <!-- Carte 2 -->
+      
+      <!-- Carte 2 - C# -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-shield-lock" style="color:#007bff;font-size:2.2rem;"></i>
+            <i class="bi bi-file-code" style="color:#68217A;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">Cybersecurity Essentials</div>
-            <div class="certif-sub">Cisco Netacad</div>
-            <div class="certif-date">Septembre 2022</div>
+            <div class="certif-title">C#</div>
+            <div class="certif-sub">ISITECH</div>
+            <div class="certif-date">2024/2025</div>
           </div>
         </div>
       </div>
-      <!-- Carte 3 -->
+      
+      <!-- Carte 3 - C++ -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-filetype-py" style="color:#3366cc;font-size:2.2rem;"></i>
+            <i class="bi bi-code-slash" style="color:#00599C;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">Apprenez à programmer en Python</div>
-            <div class="certif-sub">Openclassroom</div>
-            <div class="certif-date">Novembre 2020</div>
+            <div class="certif-title">C++</div>
+            <div class="certif-sub">ESTIAM</div>
+            <div class="certif-date">2023</div>
           </div>
         </div>
       </div>
-      <!-- Carte 4 -->
+      
+      <!-- Carte 4 - SQL -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-filetype-html" style="color:#ff8800;font-size:2.2rem;"></i>
+            <i class="bi bi-database" style="color:#00758F;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">Créez votre site web avec HTML5 et CSS3</div>
-            <div class="certif-sub">Openclassroom</div>
-            <div class="certif-date">Décembre 2023</div>
+            <div class="certif-title">SQL</div>
+            <div class="certif-sub">ESTIAM</div>
+            <div class="certif-date">2023</div>
           </div>
         </div>
       </div>
-      <!-- Carte 5 -->
+      
+      <!-- Carte 5 - Python -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-filetype-js" style="color:#ffd600;font-size:2.2rem;"></i>
+            <i class="bi bi-filetype-py" style="color:#3776AB;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">Apprenez à programmer avec JavaScript</div>
-            <div class="certif-sub">Openclassroom</div>
-            <div class="certif-date">Décembre 2023</div>
+            <div class="certif-title">Python</div>
+            <div class="certif-sub">ESTIAM</div>
+            <div class="certif-date">2023</div>
           </div>
         </div>
       </div>
-      <!-- Carte 6 -->
+      
+      <!-- Carte 6 - JavaScript -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-filetype-react" style="color:#61dafb;font-size:2.2rem;"></i>
+            <i class="bi bi-filetype-js" style="color:#F7DF1E;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">Créez une application React complète</div>
-            <div class="certif-sub">Openclassroom</div>
-            <div class="certif-date">Mars 2024</div>
+            <div class="certif-title">JavaScript</div>
+            <div class="certif-sub">ESTIAM</div>
+            <div class="certif-date">2023</div>
           </div>
         </div>
       </div>
-      <!-- Carte 7 -->
+      
+      <!-- Carte 7 - PHP -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-universal-access" style="color:#ff8800;font-size:2.2rem;"></i>
+            <i class="bi bi-filetype-php" style="color:#777BB4;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">Codez un site web accessible avec HTML & CSS</div>
-            <div class="certif-sub">Openclassroom</div>
-            <div class="certif-date">Mai 2023</div>
+            <div class="certif-title">PHP</div>
+            <div class="certif-sub">ESTIAM</div>
+            <div class="certif-date">2023</div>
           </div>
         </div>
       </div>
-      <!-- Carte 8 -->
+      
+      <!-- Carte 8 - HTML/CSS -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-journal-text" style="color:#333;font-size:2.2rem;"></i>
+            <i class="bi bi-filetype-html" style="color:#E34F26;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">Concevez un contenu web accessible</div>
-            <div class="certif-sub">Openclassroom</div>
-            <div class="certif-date">Mai 2023</div>
+            <div class="certif-title">HTML5 / CSS3</div>
+            <div class="certif-sub">ESTIAM</div>
+            <div class="certif-date">2023</div>
           </div>
         </div>
       </div>
-      <!-- Carte 9 -->
+      
+      <!-- Carte 9 - Git -->
       <div class="col-lg-4 col-md-6 certif-card">
         <div class="certif-card-inner">
           <div class="certif-icon" style="background:#fff;">
-            <i class="bi bi-chat-dots" style="color:#00ffb2;font-size:2.2rem;"></i>
+            <i class="bi bi-git" style="color:#F05032;font-size:2.2rem;"></i>
           </div>
           <div>
-            <div class="certif-title">Utilisez ChatGPT pour améliorer votre productivité</div>
-            <div class="certif-sub">Openclassroom</div>
-            <div class="certif-date">Mars 2024</div>
+            <div class="certif-title">Git / GitHub</div>
+            <div class="certif-sub">ISITECH</div>
+            <div class="certif-date">2024</div>
           </div>
         </div>
       </div>
@@ -567,29 +561,102 @@
   </div>
 </section>
 
-<section id="veille" class="section veille-section">
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Veille Technologique</h2>
-    <p>Retrouvez les dernières actualités sur la tech, l’IA et la sécurité, sélectionnées automatiquement depuis les meilleurs sites.</p>
-    <div class="veille-filtres">
-      <button class="veille-filter veille-active" data-filter="all">Tous</button>
-      <button class="veille-filter" data-filter="ia">IA</button>
-      <button class="veille-filter" data-filter="securite">Sécurité</button>
-      <button class="veille-filter" data-filter="tech">Tech News</button>
-    </div>
+<section id="veille" class="section">
+  <!-- HERO spécifique à la Veille (à l'intérieur de la page) -->
+  <div class="container section-title" role="region" aria-labelledby="veille-hero-title">
+    <h2 id="veille-hero-title" class="section-title">Ma veille technologique sur le paradoxe technologique</h2>
+    <p class="section-description">Comment les nouvelles technologies peuvent-elles résoudre les problèmes qu'elles ont elles‑mêmes créés ?</p>
+  </div>
+
+  <!-- ARTICLES : 6 cards placeholders -->
+  <div class="container section-title" style="padding-top:36px;">
   </div>
   <div class="container">
-    <div id="veille-loading" class="veille-loading">
-      <div class="spinner"></div>
-      <span>Chargement des actualités...</span>
+    <div class="articles-grid" role="list" aria-label="Liste d'articles">
+      <!-- 6 cards : images issues de assets/img ; data-url = URL cible (remplace les placeholders) -->
+      <article class="article-card" role="listitem" tabindex="0" data-url="https://www.univadis.fr/index.php/viewarticle/usage-intensif-des-reseaux-sociaux-peut-etre-un-facteur-favorisant-du-tdah?gs=0&token=WBibJnAxNw8RoLWbqK8zISnRFaVffIC7D86iskKxh4M654z4Xg4FgR0yG2r/r7YgM7a0nOYgzhWdwjBdWWIA/PC5cl4sR%2BCeeNta7XBI9vl6rZLquRWJnhrA%2BfqUclp3VeXHVOQSPVo8OdC0eujwfCrje6RXevORvR0d6KmXf1bXaXLo%2BeWfFr6pbLl/RsCYatVeWyhsjwRoBYNQOD54wtBx%2BOuEu2ib6cSCfEDSKhb/p9LK1AQG1Q%2BIWot54yECOD8rGkpntVt%2B7qtCfI4wlU6bYT%2BFVu0hrjTpUWvtIRy2wQeqPSn3lIsnrB4a%2BreKpTrdUOM3tUFiuW7kFQqYFHWcktEPl%2B4DjRWwaW1sl8vL9JgMUA2BxrbZoq%2BeaWI26wuxgv2cgue51WWQMkH1UXwJqFa4/7FHuWnCDnQeREH/RgxL3ftqJcb8Ht%2BDDAyE">
+        <figure class="article-media"><img src="assets/img/addictiontelephone.jpg.avif" alt="Réseaux sociaux et attention"></figure>
+        <div class="article-body">
+          <time class="article-badge" datetime="2024-01-08">8 JANVIER, 2024</time>
+          <h3 class="article-title">TDAH et réseaux sociaux : un lien inquiétant</h3>
+          <p class="article-author">Auteur : Dr. Marie Dupont</p>
+          <p class="article-desc">Comment l'usage intensif des réseaux affecte l'attention et la capacité de concentration — synthèse des études récentes.</p>
+          <a class="article-link" href="https://www.univadis.fr/index.php/viewarticle/usage-intensif-des-reseaux-sociaux-peut-etre-un-facteur-favorisant-du-tdah?gs=0&token=WBibJnAxNw8RoLWbqK8zISnRFaVffIC7D86iskKxh4M654z4Xg4FgR0yG2r/r7YgM7a0nOYgzhWdwjBdWWIA/PC5cl4sR%2BCeeNta7XBI9vl6rZLquRWJnhrA%2BfqUclp3VeXHVOQSPVo8OdC0eujwfCrje6RXevORvR0d6KmXf1bXaXLo%2BeWfFr6pbLl/RsCYatVeWyhsjwRoBYNQOD54wtBx%2BOuEu2ib6cSCfEDSKhb/p9LK1AQG1Q%2BIWot54yECOD8rGkpntVt%2B7qtCfI4wlU6bYT%2BFVu0hrjTpUWvtIRy2wQeqPSn3lIsnrB4a%2BreKpTrdUOM3tUFiuW7kFQqYFHWcktEPl%2B4DjRWwaW1sl8vL9JgMUA2BxrbZoq%2BeaWI26wuxgv2cgue51WWQMkH1UXwJqFa4/7FHuWnCDnQeREH/RgxL3ftqJcb8Ht%2BDDAyE" target="_blank" rel="noopener">Lire l'article</a>
+        </div>
+      </article>
+
+      <article class="article-card" role="listitem" tabindex="0" data-url="https://www.forestapp.cc/">
+        <figure class="article-media"><img src="assets/img/Forest-app.png" alt="Applications de concentration"></figure>
+        <div class="article-body">
+          <time class="article-badge" datetime="2024-02-01">1 FÉVRIER, 2024</time>
+          <h3 class="article-title">Applications de concentration : la solution numérique</h3>
+          <p class="article-author">Auteur : Lucas Martin</p>
+          <p class="article-desc">Étude des apps (Forest, Brain Focus) et de leurs mécanismes pour restaurer l'attention et réduire les interruptions.</p>
+          <a class="article-link" href="https://www.forestapp.cc/" target="_blank" rel="noopener">Lire l'article</a>
+        </div>
+      </article>
+
+      <article class="article-card" role="listitem" tabindex="0" data-url="https://www.medecindirect.fr/maladies/addictions-ecrans">
+        <figure class="article-media"><img src="assets/img/ados-phones-smo.jpg.webp" alt="Dépendance digitale"></figure>
+        <div class="article-body">
+          <time class="article-badge" datetime="2023-11-20">20 NOVEMBRE, 2023</time>
+          <h3 class="article-title">Dépendance digitale : comprendre le problème</h3>
+          <p class="article-author">Auteur : Sofia Ribeiro</p>
+          <p class="article-desc">Analyse des mécanismes psychologiques qui rendent les interfaces addictives et des enjeux sociétaux.</p>
+          <a class="article-link" href="https://www.medecindirect.fr/maladies/addictions-ecrans" target="_blank" rel="noopener">Lire l'article</a>
+        </div>
+      </article>
+
+      <article class="article-card" role="listitem" tabindex="0" data-url="https://www.pharma-gdd.com/fr/blog/digital-detox-la-cure-contre-laddiction-au-smartphone">
+        <figure class="article-media"><img src="assets/img/Reprendre le Contrle sur sa vie et grer son Temps.jpg" alt="Digital detox outils"></figure>
+        <div class="article-body">
+          <time class="article-badge" datetime="2024-03-05">5 MARS, 2024</time>
+          <h3 class="article-title">Digital detox : reprendre le contrôle</h3>
+          <p class="article-author">Auteur : Camille Bernard</p>
+          <p class="article-desc">Outils et bonnes pratiques pour une détox numérique efficace — méthodes et apps.</p>
+          <a class="article-link" href="https://www.pharma-gdd.com/fr/blog/digital-detox-la-cure-contre-laddiction-au-smartphone" target="_blank" rel="noopener">Lire l'article</a>
+        </div>
+      </article>
+
+      <article class="article-card" role="listitem" tabindex="0" data-url="https://www.info.gouv.fr/actualite/lintelligence-artificielle-au-service-de-la-sante-mentale">
+        <figure class="article-media"><img src="assets/img/image-1.png" alt="Impact sur la santé mentale"></figure>
+        <div class="article-body">
+          <time class="article-badge" datetime="2023-10-12">12 OCTOBRE, 2023</time>
+          <h3 class="article-title">Impact sur la santé mentale</h3>
+          <p class="article-author">Auteur : Emma Leroy</p>
+          <p class="article-desc">Corrélations entre usage excessif des écrans et troubles anxieux/dépressifs, en particulier chez les jeunes.</p>
+          <a class="article-link" href="https://www.info.gouv.fr/actualite/lintelligence-artificielle-au-service-de-la-sante-mentale" target="_blank" rel="noopener">Lire l'article</a>
+        </div>
+      </article>
+
+      <article class="article-card" role="listitem" tabindex="0" data-url="https://medium.com/@peter.keates/lia-et-le-bien-être-mental-au-travail-défis-et-opportunités-311cc1c25ac8">
+        <figure class="article-media"><img src="assets/img/IA_santé_macsf - 615x555.jpg" alt="IA et bien-être"></figure>
+        <div class="article-body">
+          <time class="article-badge" datetime="2024-04-02">2 AVRIL, 2024</time>
+          <h3 class="article-title">L'IA au service du bien-être</h3>
+          <p class="article-author">Auteur : Antoine Dubois</p>
+          <p class="article-desc">Cas concrets d'IA utilisées pour la productivité, le suivi de bien‑être et la personnalisation des soins.</p>
+          <a class="article-link" href="https://medium.com/@peter.keates/lia-et-le-bien-être-mental-au-travail-défis-et-opportunités-311cc1c25ac8" target="_blank" rel="noopener">Lire l'article</a>
+        </div>
+      </article>
     </div>
-    <div id="veille-error" class="veille-error" style="display:none;">
-      <i class="bi bi-exclamation-triangle"></i> Impossible de charger les actualités. Veuillez réessayer plus tard.
+  </div>
+
+  <!-- MA RÉPONSE -->
+  <div class="container section-title" style="padding-top:34px;">
+    <h2>Ma réponse à la problématique</h2>
+    <p class="lead">Comment les nouvelles technologies peuvent-elles résoudre les problèmes qu'elles ont elles‑mêmes créés ?</p>
+  </div>
+  <div class="container reponse-layout">
+    <div class="reponse-text">
+      <p>En conclusion, les nouvelles technologies présentent un paradoxe fascinant : elles sont à la fois la source et la solution de nombreux problèmes contemporains. Les réseaux sociaux et les smartphones ont contribué à l'émergence de troubles de l'attention et de dépendances numériques, mais paradoxalement, ce sont également les technologies qui offrent les solutions les plus innovantes pour y remédier.</p>
+      <p>Des applications comme Forest, Brain Focus ou les modes de concentration intégrés aux smartphones permettent de bloquer les distractions et de retrouver sa capacité de concentration. L'intelligence artificielle, souvent critiquée, est utilisée dans des applications de productivité pour optimiser notre temps et améliorer notre bien-être numérique. Ces avancées favorisent l'autonomie, facilitent la communication et l'accès à l'information, contribuant ainsi à une société plus inclusive.</p>
+      <p>Bien que la législation accompagne ces efforts en encadrant les pratiques numériques, il est nécessaire de poursuivre les recherches et les développements technologiques pour répondre aux besoins spécifiques de chaque individu et promouvoir une accessibilité universelle. En tant que futurs développeurs, nous avons une responsabilité éthique : créer des technologies qui servent réellement l'utilisateur plutôt que de l'exploiter.</p>
+      <p>Le véritable enjeu n'est pas de rejeter la technologie, mais d'apprendre à l'utiliser de manière consciente et équilibrée. C'est par cette prise de conscience collective que nous pourrons transformer le cercle vicieux en cercle vertueux, en exploitant le potentiel positif des technologies tout en nous protégeant de leurs aspects néfastes.</p>
     </div>
-    <div id="veille-grid" class="veille-grid"></div>
+    <div class="reponse-figure"><img src="assets/img/environnement-nouvelles-technologies-green-tech-43da3c-0@1x.jpeg" alt="Illustration smartphone et bien-être numérique"></div>
   </div>
 </section>
-
 
   <div class="container section-title" data-aos="fade-up">
     <h2>CV</h2>
@@ -687,6 +754,27 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+  // Petite logique locale Veille (smooth scroll & accessibilité)
+  (function(){
+    document.addEventListener('DOMContentLoaded', function(){
+      // smooth + focus pour le bouton "Lire plus"
+      var lire = document.getElementById('lire-plus');
+      if(lire){
+        lire.addEventListener('click', function(e){
+          var t = document.getElementById('reponse') || document.querySelector('.reponse-layout');
+          if(t){ e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' });
+            setTimeout(function(){ t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); }, 600);
+          }
+        });
+      }
+      // rendre les article-cards focusables (clavier)
+      document.querySelectorAll('.article-card').forEach(function(card){
+        if(!card.hasAttribute('tabindex')) card.setAttribute('tabindex','0');
+      });
+    });
+  })();
+  </script>
 
 </body>
 

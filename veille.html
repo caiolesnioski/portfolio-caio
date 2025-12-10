@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Veille — Paradoxe technologique — Caio Lesnioski</title>
+
+  <!-- Réutilisation des fonts et du CSS principal du portfolio -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@500;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet"> <!-- styles globaux -->
+  <link href="assets/css/veille.css" rel="stylesheet"> <!-- styles spécifiques page veille -->
+
+  <!-- meta -->
+  <meta name="description" content="Ma veille technologique sur le paradoxe technologique — comment la tech peut résoudre ses propres dommages">
+</head>
+<body class="index-page">
+
+  <!-- Header : repris du site pour cohérence (navigation accessible) -->
+  <header id="header" class="header d-flex flex-column justify-content-center" role="banner">
+    <i class="header-toggle d-xl-none bi bi-list" aria-hidden="true"></i>
+    <nav id="navmenu" class="navmenu" role="navigation" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html"><i class="bi bi-house navicon"></i><span>Accueil</span></a></li>
+        <li><a href="index.html#veille" class="active"><i class="bi bi-bar-chart navicon"></i><span>Veille</span></a></li>
+        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" role="main">
+
+    <!-- HERO SECTION -->
+    <section class="veille-hero" aria-labelledby="hero-title">
+      <div class="veille-hero-overlay"></div>
+      <div class="container veille-hero-inner">
+        <h1 id="hero-title">Ma veille technologique sur le paradoxe technologique</h1>
+        <p class="veille-hero-sub">Comment les nouvelles technologies peuvent-elles résoudre les problèmes qu'elles ont elles-mêmes créés ?</p>
+        <div class="veille-hero-cta">
+          <a class="btn btn-primary" href="mailto:caiolesnioski@gmail.com" aria-label="Contactez-moi">Contactez‑moi</a>
+          <a id="lire-plus" class="btn btn-outline-light" href="#reponse" aria-label="Lire plus sur la réponse">Lire plus</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION ARTICLES -->
+    <section class="veille-articles section" aria-labelledby="articles-title">
+      <div class="container section-title">
+        <h2 id="articles-title">Articles sélectionnés</h2>
+        <p>Articles et réflexions autour du paradoxe technologique — placeholders, liens à remplacer.</p>
+      </div>
+
+      <div class="container">
+        <div class="articles-grid" role="list" aria-label="Liste d'articles de veille">
+          <!-- Card 1 -->
+          <article class="article-card" role="listitem">
+            <figure class="article-media">
+              <img src="assets/img/hero-bg.jpg" alt="Réseaux sociaux et attention" width="640" height="360">
+            </figure>
+            <div class="article-body">
+              <time class="article-badge" datetime="2024-01-08">8 JANVIER, 2024</time>
+              <h3 class="article-title">TDAH et réseaux sociaux : un lien inquiétant</h3>
+              <p class="article-desc">Examen des études récentes montrant comment l'usage intensif des réseaux affecte l'attention et la capacité de concentration.</p>
+              <a class="article-link" href="#" target="_blank" rel="noopener" aria-label="Lire l'article TDAH et réseaux sociaux">Lire l'article</a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="article-card" role="listitem">
+            <figure class="article-media">
+              <img src="assets/img/profile-img.jpg" alt="Applications de concentration" width="640" height="360">
+            </figure>
+            <div class="article-body">
+              <time class="article-badge" datetime="2024-02-01">1 FÉVRIER, 2024</time>
+              <h3 class="article-title">Applications de concentration : la solution numérique</h3>
+              <p class="article-desc">Présentation des apps (Forest, Brain Focus) et de leurs mécanismes pour restaurer l'attention et diminuer les interruptions.</p>
+              <a class="article-link" href="#" target="_blank" rel="noopener" aria-label="Lire l'article Applications de concentration">Lire l'article</a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="article-card" role="listitem">
+            <figure class="article-media">
+              <img src="assets/img/services.jpg" alt="Dépendance digitale" width="640" height="360">
+            </figure>
+            <div class="article-body">
+              <time class="article-badge" datetime="2023-11-20">20 NOVEMBRE, 2023</time>
+              <h3 class="article-title">Dépendance digitale : comprendre le problème</h3>
+              <p class="article-desc">Analyse des mécanismes psychologiques qui rendent les interfaces addictives et des enjeux sociétaux associés.</p>
+              <a class="article-link" href="#" target="_blank" rel="noopener" aria-label="Lire l'article Dépendance digitale">Lire l'article</a>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="article-card" role="listitem">
+            <figure class="article-media">
+              <img src="assets/img/masonry-portfolio/imj-code.png" alt="Digital detox outils" width="640" height="360">
+            </figure>
+            <div class="article-body">
+              <time class="article-badge" datetime="2024-03-05">5 MARS, 2024</time>
+              <h3 class="article-title">Digital detox : reprendre le contrôle</h3>
+              <p class="article-desc">Outillage et bonnes pratiques pour une détox numérique efficace — méthodes et applications pratiques.</p>
+              <a class="article-link" href="#" target="_blank" rel="noopener" aria-label="Lire l'article Digital detox">Lire l'article</a>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="article-card" role="listitem">
+            <figure class="article-media">
+              <img src="assets/img/masonry-portfolio/portfolio/app-1.jpg" alt="Impact sur la santé mentale" width="640" height="360">
+            </figure>
+            <div class="article-body">
+              <time class="article-badge" datetime="2023-10-12">12 OCTOBRE, 2023</time>
+              <h3 class="article-title">Impact sur la santé mentale</h3>
+              <p class="article-desc">Études sur la corrélation entre usage intensif des écrans et troubles anxieux / dépressifs chez les jeunes.</p>
+              <a class="article-link" href="#" target="_blank" rel="noopener" aria-label="Lire l'article Impact sur la santé mentale">Lire l'article</a>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="article-card" role="listitem">
+            <figure class="article-media">
+              <img src="assets/img/masonry-portfolio/portfolio/product-1.jpg" alt="IA et bien-être" width="640" height="360">
+            </figure>
+            <div class="article-body">
+              <time class="article-badge" datetime="2024-04-02">2 AVRIL, 2024</time>
+              <h3 class="article-title">L'IA au service du bien-être</h3>
+              <p class="article-desc">Cas concrets d'IA utilisées pour la productivité, l'accompagnement psychologique et la personnalisation des soins.</p>
+              <a class="article-link" href="#" target="_blank" rel="noopener" aria-label="Lire l'article L'IA au service du bien-être">Lire l'article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION MA RÉPONSE -->
+    <section id="reponse" class="veille-reponse section" aria-labelledby="reponse-title">
+      <div class="container section-title">
+        <h2 id="reponse-title">Ma réponse à la problématique</h2>
+        <p class="lead">Comment les nouvelles technologies peuvent-elles résoudre les problèmes qu'elles ont elles‑mêmes créés ?</p>
+      </div>
+
+      <div class="container reponse-layout">
+        <div class="reponse-text">
+          <!-- Paragraphe 1 -->
+          <p>En conclusion, les nouvelles technologies présentent un paradoxe fascinant : elles sont à la fois la source et la solution de nombreux problèmes contemporains. Les réseaux sociaux et les smartphones ont contribué à l'émergence de troubles de l'attention et de dépendances numériques, mais paradoxalement, ce sont également les technologies qui offrent les solutions les plus innovantes pour y remédier.</p>
+
+          <!-- Paragraphe 2 -->
+          <p>Des applications comme Forest, Brain Focus ou les modes de concentration intégrés aux smartphones permettent de bloquer les distractions et de retrouver sa capacité de concentration. L'intelligence artificielle, souvent critiquée, est utilisée dans des applications de productivité pour optimiser notre temps et améliorer notre bien-être numérique. Ces avancées favorisent l'autonomie, facilitent la communication et l'accès à l'information, contribuant ainsi à une société plus inclusive.</p>
+
+          <!-- Paragraphe 3 -->
+          <p>Bien que la législation accompagne ces efforts en encadrant les pratiques numériques, il est nécessaire de poursuivre les recherches et les développements technologiques pour répondre aux besoins spécifiques de chaque individu et promouvoir une accessibilité universelle. En tant que futurs développeurs, nous avons une responsabilité éthique : créer des technologies qui servent réellement l'utilisateur plutôt que de l'exploiter.</p>
+
+          <!-- Paragraphe 4 -->
+          <p>Le véritable enjeu n'est pas de rejeter la technologie, mais d'apprendre à l'utiliser de manière consciente et équilibrée. C'est par cette prise de conscience collective que nous pourrons transformer le cercle vicieux en cercle vertueux, en exploitant le potentiel positif des technologies tout en nous protégeant de leurs aspects néfastes.</p>
+        </div>
+
+        <div class="reponse-figure" aria-hidden="false">
+          <img src="assets/img/hero-bg.jpg" alt="Illustration smartphone et bien-être numérique" width="800" height="500">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer simple pour garder cohérence visuelle -->
+  <footer class="footer">
+    <div class="container text-center">
+      <small style="color:var(--default-color)">© Caio Lesnioski — Veille technologique</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script> <!-- conserve le comportement global -->
+  <script src="assets/js/veille-page.js"></script> <!-- script spécifique page -->
+</body>
+</html>
