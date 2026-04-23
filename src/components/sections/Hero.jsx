@@ -53,9 +53,13 @@ export default function Hero() {
         transition={{ duration: 0.7 }}
         className="relative z-10 flex flex-col items-center gap-6"
       >
-        {/* Avatar placeholder */}
-        <div className="w-28 h-28 rounded-full border-2 border-[#e63946]/60 bg-white/5 flex items-center justify-center text-4xl font-bold text-[#e63946]">
-          CL
+        {/* Avatar */}
+        <div className="w-28 h-28 rounded-full border-2 border-[#e63946]/60 overflow-hidden">
+          <img
+            src="/my-notion-face-transparent.png"
+            alt="Caio Lesnioski"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div>

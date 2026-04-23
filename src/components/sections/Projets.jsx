@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { projects, filterTags } from '../../data/projects'
-import { Github, ExternalLink, X, Star, Code } from 'lucide-react'
+import { Github, ExternalLink, X, Code, Image } from 'lucide-react'
 
 function ProjectCard({ project, onClick }) {
   return (
@@ -12,29 +12,22 @@ function ProjectCard({ project, onClick }) {
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.25 }}
       onClick={() => onClick(project)}
-      className={`cursor-pointer rounded-xl border bg-white/[0.03] overflow-hidden hover:shadow-lg transition-all group ${
-        project.isBanca
-          ? 'border-[#e63946]/40 hover:border-[#e63946]/70'
-          : 'border-white/10 hover:border-white/20'
-      }`}
+      className="cursor-pointer rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden hover:shadow-lg hover:border-white/20 transition-all group"
     >
-      {/* Image placeholder — TODO: remplacer par screenshot du projet */}
-      <div className="h-44 bg-white/5 flex flex-col items-center justify-center gap-2 border-b border-white/5">
-        <Code size={32} className="text-white/20" />
-        <span className="text-white/20 text-xs">Aperçu du projet à venir</span>
-      </div>
+      {project.img ? (
+        <img
+          src={project.img}
+          alt={project.title}
+          className="h-[240px] w-full object-cover rounded-t-xl border-b border-white/5"
+        />
+      ) : (
+        <div className="h-[240px] bg-white/5 flex flex-col items-center justify-center gap-2 border-b border-white/5 rounded-t-xl">
+          <Image size={32} className="text-white/20" />
+          <span className="text-white/20 text-xs">Aperçu non disponible</span>
+        </div>
+      )}
 
       <div className="p-5">
-        {/* Banca badge */}
-        {project.isBanca && (
-          <div className="flex items-center gap-1.5 mb-3">
-            <Star size={12} fill="#e63946" className="text-[#e63946]" />
-            <span className="text-[10px] font-semibold text-[#e63946] uppercase tracking-widest">
-              Présentation banca
-            </span>
-          </div>
-        )}
-
         <h3 className="font-bold text-white text-base mb-0.5">{project.title}</h3>
         <p className="text-white/40 text-xs mb-3">{project.subtitle}</p>
 
@@ -107,14 +100,6 @@ function ProjectModal({ project, onClose }) {
         {/* Header */}
         <div className="sticky top-0 bg-[#111] border-b border-white/10 px-6 py-4 flex items-start justify-between">
           <div>
-            {project.isBanca && (
-              <div className="flex items-center gap-1.5 mb-1">
-                <Star size={12} fill="#e63946" className="text-[#e63946]" />
-                <span className="text-[10px] font-semibold text-[#e63946] uppercase tracking-widest">
-                  Présentation banca
-                </span>
-              </div>
-            )}
             <h2 className="text-xl font-bold text-white">{project.title}</h2>
             <p className="text-white/40 text-sm">{project.subtitle}</p>
           </div>
@@ -127,11 +112,18 @@ function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
-        {/* Image placeholder — TODO: remplacer par screenshot du projet */}
-        <div className="h-48 bg-white/[0.03] flex flex-col items-center justify-center gap-2 border-b border-white/5">
-          <Code size={36} className="text-white/15" />
-          <span className="text-white/20 text-xs">Aperçu du projet à venir</span>
-        </div>
+        {project.img ? (
+          <img
+            src={project.img}
+            alt={project.title}
+            className="h-48 w-full object-cover border-b border-white/5"
+          />
+        ) : (
+          <div className="h-48 bg-white/[0.03] flex flex-col items-center justify-center gap-2 border-b border-white/5">
+            <Image size={36} className="text-white/15" />
+            <span className="text-white/20 text-xs">Aperçu non disponible</span>
+          </div>
+        )}
 
         {/* Links */}
         <div className="px-6 py-4 flex gap-4 border-b border-white/5">

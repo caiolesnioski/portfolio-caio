@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { veilleArticles, veilleReponse } from '../../data/veille'
-import { BookOpen, Mic } from 'lucide-react'
+import { BookOpen, ExternalLink } from 'lucide-react'
 
 export default function Veille() {
   return (
@@ -36,29 +36,23 @@ export default function Veille() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className={`rounded-xl border p-5 ${
-                article.isPresented
-                  ? 'border-[#e63946]/50 bg-[#e63946]/5'
-                  : 'border-white/10 bg-white/[0.02]'
-              }`}
+              className="group rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col"
             >
-              {article.isPresented && (
-                <div className="flex items-center gap-1.5 mb-3">
-                  <Mic size={12} className="text-[#e63946]" />
-                  <span className="text-[10px] font-semibold text-[#e63946] uppercase tracking-widest">
-                    À présenter
-                  </span>
-                </div>
-              )}
-              <div className="flex items-start gap-3">
-                <BookOpen
-                  size={16}
-                  className={`flex-shrink-0 mt-0.5 ${article.isPresented ? 'text-[#e63946]' : 'text-white/30'}`}
-                />
-                <div>
+              <div className="flex items-start gap-3 flex-1">
+                <BookOpen size={16} className="flex-shrink-0 mt-0.5 text-white/30" />
+                <div className="flex flex-col flex-1">
                   <p className="text-white/35 text-xs mb-1">{article.date} — {article.source}</p>
                   <h4 className="text-white font-semibold text-sm mb-2">{article.title}</h4>
-                  <p className="text-white/55 text-xs leading-relaxed">{article.summary}</p>
+                  <p className="text-white/55 text-xs leading-relaxed flex-1">{article.summary}</p>
+                  <a
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-[#e63946] hover:text-[#e63946]/80 transition-colors self-start"
+                  >
+                    <ExternalLink size={12} />
+                    Lire l&apos;article
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -78,6 +72,12 @@ export default function Veille() {
               </p>
             ))}
           </div>
+          <img
+            src="/images/projects/nouvelles-technologies.jpeg"
+            alt="Nouvelles technologies"
+            style={{ borderRadius: '12px', margin: '1.5rem auto 0', display: 'block' }}
+            className="w-full max-w-[600px] object-cover"
+          />
         </div>
       </motion.div>
     </section>
