@@ -24,8 +24,8 @@ export const projects = [
     tags: ['React', 'JavaScript', 'Formation'],
     isBanca: true,
     // TODO: ajouter lien GitHub
-    github: null,
-    demo: null,
+    github:'https://github.com/caiolesnioski/ColoLyon',
+    demo:'https://colo-lyon.vercel.app',
     contexte: `Projet réalisé durant la 1ère année de BTS SIO. Création d'une plateforme web permettant aux étudiants de Lyon de trouver des colocations adaptées à leurs besoins et budget.`,
     besoin: `Faciliter la recherche de colocation pour les étudiants nouvellement arrivés à Lyon, avec une interface simple, filtrée et accessible — une problématique vécue personnellement lors de l'installation en France.`,
     environnement: `Projet construit de zéro. React, JavaScript, CSS responsive, structuration des annonces par quartiers lyonnais.`,
