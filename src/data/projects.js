@@ -41,7 +41,7 @@ export const projects = [
     tags: ['JavaScript', 'Stage', 'Accessibilité'],
     isBanca: true,
     github: 'https://github.com/caiolesnioski/TDAH',
-    demo: null,
+    demo: 'https://tdah-one.vercel.app/',
     contexte: `Stage de 2ème année. Développement d'une application web destinée aux personnes atteintes de TDAH, pour les aider à mieux s'organiser au quotidien et réduire la procrastination.`,
     besoin: `Les personnes atteintes de TDAH rencontrent des difficultés spécifiques : gestion du temps, hiérarchisation des tâches, maintien de la concentration. L'application devait proposer des outils concrets adaptés à ces besoins.`,
     environnement: `Approche centrée utilisateur, prise en compte des besoins des personnes neurodivergentes, accessibilité numérique. Voir le dépôt pour la stack complète.`,
